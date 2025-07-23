@@ -1,0 +1,5 @@
+[default.general]
+chip = "STM32U575ZITxQ"
+
+[debug.gdb]
+enabled = true

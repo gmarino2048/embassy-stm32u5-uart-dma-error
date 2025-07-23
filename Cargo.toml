@@ -1,0 +1,38 @@
+[package]
+name = "u5-dma-test"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cortex-m = { version = "0.7.7", features = [
+  "inline-asm",
+  "critical-section-single-core",
+] }
+cortex-m-rt = "0.7.5"
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+embassy-executor = { version = "0.7.0", features = [
+  "defmt",
+  "arch-cortex-m",
+  "executor-thread",
+  "nightly",
+] }
+embassy-stm32 = { version = "0.2.0", features = [
+  "defmt",
+  "stm32u575zi",
+  "memory-x",
+  "exti",
+  "time-driver-any",
+] }
+embassy-time = { version = "0.4.0", features = ["defmt"] }
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+
+[[bin]]
+name = "u5-dma-test"
+test = false
+bench = false
+
+[features]
+default = []
+read-until-idle = []
+change-destination = []

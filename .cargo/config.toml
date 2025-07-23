@@ -1,0 +1,17 @@
+[build]
+target = "thumbv8m.main-none-eabihf"
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = [
+  "probe-rs",
+  "run",
+  "--chip",
+  "STM32U575ZITxQ",            # Dev Board
+  "--log-format",
+  "{t} [{L}] {s}",
+  "--always-print-stacktrace",
+]
+
+[env]
+DEFMT_LOG = "trace,embassy_usb=info"
+DEFMT_RTT_BUFFER_SIZE = "2048"
